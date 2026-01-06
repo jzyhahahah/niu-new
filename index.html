@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style id="react-native-stylesheet"></style>
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover">
+  <title>牛New寿喜烧(滨江宝龙城店)</title>
+  <style>
+    /* 全局样式重置 */
+    html {
+      /* 字体 */
+      font-family: 'PingFang SC', sans-serif;
+      /* 去掉触摸遮盖层,防止点击闪烁 */
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    html,
+    body,
+    #root {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    /* 消除阴影和边框 */
+    iframe,
+    img,
+    input,
+    textarea,
+    select {
+      appearance: none;
+      border: 0;
+      outline: none;
+    }
+
+    /* 去除输入框上下箭头 */
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* 去除虚线 */
+    input:focus,
+    select:focus,
+    textarea:focus,
+    button:focus {
+      outline: none;
+    }
+
+    /* 去除下划线 */
+    a {
+      text-decoration: none;
+    }
+
+    textarea::placeholder,
+    input::placeholder {
+      color: #ccc;
+    }
+
+    /* 隐藏搜索框clear按钮 */
+    ::-ms-clear {
+      display: none;
+    }
+
+    ::-webkit-search-decoration,
+    ::-webkit-search-cancel-button,
+    ::-webkit-search-results-button,
+    ::-webkit-search-results-decoration {
+      display: none;
+    }
+
+    @keyframes loadingView {
+      from {
+        transform: rotateZ(0deg);
+      }
+
+      to {
+        transform: rotateZ(360deg);
+      }
+    }
+
+    #root {
+      display: flex;
+    }
+  </style>
+  <meta content="meishi" name="lx:category">
+  <meta content="dp_m" name="lx:appnm">
+  <style id="rax-scrollview-style">
+    .rax-scrollview::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+  <style id="max-internal-pullrefresh-style">
+    @keyframes max-internal-pullrefresh-spin {
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <style>
+    .rax-view-v2 {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      align-content: flex-start;
+      border: 0 solid #000;
+      margin: 0;
+      padding: 0;
+      min-width: 0;
+      position: relative
+    }
+
+    .hide-tap-highlight {
+      -webkit-tap-highlight-color: transparent
+    }
+
+    .rax-pan-view {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      align-content: flex-start;
+      border: 0 solid #000;
+      margin: 0;
+      padding: 0;
+      min-width: 0;
+      position: relative
+    }
+
+    .__rax-text {
+      display: inline;
+      flex-shrink: unset
+    }
+
+    .__rax-text--singleline {
+      max-width: 100%
+    }
+
+    .__rax-text--singleline .__rax-text {
+      white-space: nowrap
+    }
+
+    .rax-text-v2 {
+      box-sizing: border-box;
+      display: block;
+      font-size: 4.26667vw;
+      white-space: pre-wrap
+    }
+
+    .rax-text-v2--other-default {
+      letter-spacing: 0;
+      word-break: break-all
+    }
+
+    .rax-text-v2--overflow-hidden {
+      overflow: hidden
+    }
+
+    .rax-text-v2--singleline {
+      white-space: nowrap
+    }
+
+    .rax-text-v2--ellipsis {
+      text-overflow: ellipsis
+    }
+
+    .rax-text-v2--multiline {
+      display: -webkit-box;
+      -webkit-box-orient: vertical
+    }
+
+    .rax-textinput {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-color: transparent;
+      border-color: #000;
+      border-width: 0;
+      box-sizing: border-box;
+      color: #000;
+      padding: 0 0 0 3.2vw;
+      font-size: 3.2vw;
+      line-height: 8vw;
+      height: 8vw;
+      outline: none
+    }
+
+    .max-button-v1 {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      align-content: flex-start;
+      border: 0 solid #000;
+      margin: 0;
+      padding: 0;
+      min-width: 0;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      -moz-user-select: none;
+      user-select: none;
+      -webkit-user-select: none
+    }
+
+    .max-button-hover {
+      opacity: .5
+    }
+
+    .max-internal-web-refresh {
+      animation: max-internal-pullrefresh-spin 2s linear infinite;
+      width: 6vw;
+      height: 6vw;
+      margin-bottom: 2vw
+    }
+
+    @keyframes max-internal-pullrefresh-spin {
+      to {
+        transform: rotate(1turn)
+      }
+    }
+
+    .rax-scrollview-vertical {
+      display: flex;
+      flex-direction: column
+    }
+
+    .rax-scrollview-horizontal {
+      display: flex;
+      flex-direction: row
+    }
+
+    .rax-scrollview-content-container-horizontal {
+      flex-direction: row
+    }
+
+    .rax-scrollview-webcontainer {
+      display: block
+    }
+
+    .max-scrollview-stickyDom {
+      position: sticky;
+      top: 0;
+      z-index: 10
+    }
+
+    .leez-top-view-container {
+      position: fixed;
+      z-index: 100000;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column
+    }
+
+    .__rax-text {
+      box-sizing: border-box;
+      display: block;
+      font-size: 4.26667vw;
+      white-space: pre-wrap
+    }
+
+    .__rax-text--other-default {
+      letter-spacing: 0;
+      word-break: break-all
+    }
+
+    .__rax-text--overflow-hidden {
+      overflow: hidden
+    }
+
+    .__rax-text--singleline {
+      white-space: nowrap
+    }
+
+    .__rax-text--ellipsis {
+      text-overflow: ellipsis
+    }
+
+    .__rax-text--multiline {
+      display: -webkit-box;
+      -webkit-box-orient: vertical
+    }
+
+    .rax-slider {
+      position: relative;
+      align-items: center
+    }
+
+    .rax-slider-swipe-wrapper {
+      overflow: hidden;
+      position: relative
+    }
+
+    .rax-slider-swipe {
+      position: relative;
+      transform: translateZ(0)
+    }
+
+    .rax-slider-children {
+      position: absolute;
+      left: 0;
+      top: 0
+    }
+
+    .rax-slider-dot {
+      border-radius: 50%;
+      margin: .4vw;
+      display: inline-block;
+      background-color: hsla(0, 0%, 100%, .5);
+      width: 1.06667vw;
+      height: 1.06667vw
+    }
+
+    .rax-slider-dot-active {
+      background-color: #ff5000
+    }
+
+    .rax-slider-pagination {
+      position: absolute;
+      bottom: 20%;
+      display: flex;
+      margin: 0 auto;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent
+    }
+
+    #root,
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4
+    }
+  </style>
+</head>
+
+<body class="">
+
+  <div id="root">
+    <div
+      style="flex: 1 1 0%; height: 100%; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-content: flex-start; border: 0px; margin: 0px; padding: 0px; min-width: 0px; position: relative;">
+      <div class="rax-view-v2 hide-tap-highlight" style="flex: 1 1 0%; flex-direction: column;">
+        <div class="rax-view-v2 undefined"></div>
+      </div>
+    </div>
+    <div
+      style="position: fixed; z-index: 10000; inset: 0px; pointer-events: none; box-sizing: border-box; display: flex; flex-direction: column; align-content: flex-start; border: 0px; margin: 0px; padding: 0px; min-width: 0px;">
+      <div class="leez-top-view-container ">
+        <div class="rax-view-v2 hide-tap-highlight"
+          style="flex: 1 1 0%; flex-direction: column; background-color: rgb(247, 247, 247); pointer-events: all;">
+          <div class="rax-view-v2" style="flex: 1 1 0%;">
+            <div refreshtype="system"
+              class="rax-view-v2 hide-tap-highlight max-scrollView-b51414d2-5856-46cb-aa91-8a1d99799996 rax-scrollview rax-scrollview-vertical max-scrollview"
+              style="height: 911px; width: 100%; padding-left: 8px; padding-right: 8px; margin-top: 0px; overflow: hidden scroll;">
+              <div class="rax-view-v2 hide-tap-highlight" style="overflow: hidden; min-height: 100%;">
+                <div class="rax-view-v2 hide-tap-highlight" style="position: relative;">
+                  <div class="rax-view-v2 hide-tap-highlight max-internal-pullrefresh-wrapper imgView"
+                    style="display: flex; align-items: center; justify-content: center; position: relative; height: 0px; overflow: hidden; transition: height;">
+                    <img
+                      src="data:image/png;base64,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"
+                      class="max-internal-web-refresh">
+                  </div>
+                  <div class="rax-view-v2 hide-tap-highlight">
+                    <div class="rax-view-v2 hide-tap-highlight" style="display: block;">
+                      <div class="rax-view-v2 hide-tap-highlight"
+                        style="display: flex; flex-direction: column; background-color: rgb(255, 255, 255); border-radius: 12px; padding-bottom: 0px; margin-top: 9px;">
+                        <div class="rax-view-v2">
+                          <div class="rax-view-v2 hide-tap-highlight"
+                            style="flex-direction: row; align-items: center; margin-left: 12px; margin-right: 12px; margin-top: 13px;">
+                            <div class="__rax-text __rax-text--other-default "
+                              style="font-family: &quot;PingFang SC&quot;; font-weight: 600; font-size: 16px; color: rgb(17, 17, 17); line-height: 22px; letter-spacing: 0px; text-align: left;">
+                              无法获取当前位置，排队功能暂不可用</div>
+                            <div class="rax-view-v2 hide-tap-highlight"></div>
+                          </div>
+                        </div>
+                        <div class="rax-view-v2 hide-tap-highlight" style="height: 0px; opacity: 0;">
+                          <div class="rax-view-v2">
+                            <div class="rax-view-v2 hide-tap-highlight"
+                              style="margin: 9px 12px; padding-bottom: 14px; padding-left: 12px; padding-right: 12px; background-color: rgb(249, 249, 249); border-radius: 8px; display: flex; flex-direction: column;">
+                              <div class="max-button-v1"
+                                style="margin-top: 13px; display: flex; flex-direction: row; align-items: center; justify-content: space-between;">
+                                <div class="rax-view-v2 hide-tap-highlight"
+                                  style="flex-direction: row; align-items: center;">
+                                  <div
+                                    class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
+                                    style="font-family: PingFangSC-Semibold; font-weight: 600; font-size: 14px; color: rgb(17, 17, 17); line-height: 20px; letter-spacing: 0px; max-height: 20px;">
+                                    到店时间</div>
+                                  <div
+                                    class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
+                                    style="font-family: PingFangSC-Semibold; font-weight: 600; font-size: 14px; color: rgb(17, 17, 17); line-height: 20px; letter-spacing: 0px; max-height: 20px; margin-left: 14px;">
+                                  </div>
+                                </div><img src="./牛New寿喜烧(滨江宝龙城店)_files/queue_arrival_time_arrow.png" class=""
+                                  style="width: 11px; height: 11px; line-height: 11px; color: rgb(136, 136, 136);">
+                              </div>
+                              <div class="rax-view-v2 hide-tap-highlight"
+                                style="transform: scaleY(0.5); height: 1px; background-color: rgb(229, 229, 229); margin-top: 13px;">
+                              </div>
+                              <div class="rax-view-v2 hide-tap-highlight"
+                                style="display: flex; flex-direction: row; margin-top: 14px;">
+                                <div
+                                  class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
+                                  style="font-family: PingFangSC-Regular; font-weight: 400; font-size: 12px; color: rgb(136, 136, 136); line-height: 16px; letter-spacing: 0px; max-height: 16px;">
+                                  已选时间到店后仍需要等位，建议立即取号</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="rax-view-v2">
+                          <div class="rax-view-v2 hide-tap-highlight"
+                            style="margin-left: 12px; margin-right: 12px; margin-top: 14px;">
+                            <div class="rax-view-v2 hide-tap-highlight"
+                              style="border-radius: 8px; margin-bottom: 12px; background-color: rgb(249, 249, 249); overflow: hidden;">
+                              <div class="rax-view-v2 hide-tap-highlight">
+                                <div class="rax-view-v2">
+                                  <div class="rax-view-v2 hide-tap-highlight"
+                                    style="flex-direction: row; align-items: center; justify-content: space-between; border-width: 0.5px; border-color: transparent; background-color: rgb(249, 249, 249); padding-right: 12px; height: 48px;">
+                                    <div class="rax-view-v2 hide-tap-highlight"
+                                      style="flex-direction: row; align-items: center;">
+                                      <div class="rax-view-v2 hide-tap-highlight"
+                                        style="flex-direction: column; margin-left: 12px; width: 78px; margin-bottom: 3px;">
+                                        <div class="rax-view-v2 hide-tap-highlight"
+                                          style="flex-direction: row; align-items: center;">
+                                          <div
+                                            class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
+                                            style="font-family: MTNewDigitalDisplay-Bold; font-size: 16px; color: rgb(17, 17, 17); line-height: 22px; letter-spacing: 0px; max-height: 22px; margin-bottom: 0px;">
+                                            1-4</div>
+                                          <div
+                                            class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
+                                            style="font-family: &quot;PingFang SC&quot;; font-weight: 500; font-size: 16px; color: rgb(17, 17, 17); line-height: 22px; letter-spacing: 0px; max-height: 22px; margin-left: 2px; margin-bottom: 1px;">
+                                            人</div>
+                                        </div>
+                                        <div
+                                          class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
+                                          style="font-family: &quot;PingFang SC&quot;; font-weight: 500; font-size: 10px; color: rgb(17, 17, 17); line-height: 14px; letter-spacing: 0px; max-height: 14px; margin-top: -2px; margin-left: 12px;">
+                                          小桌</div>
+                                      </div>
+                                      <div class="rax-view-v2 hide-tap-highlight"
+                                        style="flex-direction: row; align-items: center; margin-left: 3px;">
+                                        <div
+                                          class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
+                                          style="font-family: PingFangSC-Regular; font-weight: 400; font-size: 12px; color: rgb(17, 17, 17); line-height: 16px; letter-spacing: 0px; max-height: 16px;">
+                                          暂未排队</div>
+                                        <div class="rax-view-v2 hide-tap-highlight"
+                                          style="flex-direction: row; align-items: center;">
+                                          <div class="rax-view-v2 hide-tap-highlight"
+                                            style="width: 0.5px; height: 11px; margin-left: 4px; margin-right: 4px; background-color: rgb(204, 204, 204);">
+                                          </div>
+                                          <div
+                                            class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
+                                            style="font-family: PingFangSC-Regular; font-weight: 400; font-size: 12px; color: rgb(17, 17, 17); line-height: 16px; letter-spacing: 0px; max-height: 16px;">
+                                            无需等待</div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="rax-view-v2 hide-tap-highlight"
+                                  style="transform: scaleY(0.5); height: 1px; background-color: rgb(229, 229, 229); margin-top: -1px; margin-left: 12px; margin-right: 12px;">
+                                </div>
+                              </div>
+                              <div class="rax-view-v2 hide-tap-highlight">
+                                <div class="rax-view-v2">
+                                  <div class="rax-view-v2 hide-tap-highlight"
+                                    style="flex-direction: row; align-items: center; justify-content: space-between; border-width: 0.5px; border-color: transparent; background-color: rgb(249, 249, 249); padding-right: 12px; height: 48px;">
+                                    <div class="rax-view-v2 hide-tap-highlight"
+                                      style="flex-direction: row; align-items: center;">
+                                      <div class="rax-view-v2 hide-tap-highlight"
+                                        style="flex-direction: column; margin-left: 12px; width: 78px; margin-bottom: 3px;">
+                                        <div class="rax-view-v2 hide-tap-highlight"
+                                          style="flex-direction: row; align-items: center;">
+                                          <div
+                                            class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
+                                            style="font-family: MTNewDigitalDisplay-Bold; font-size: 16px; color: rgb(17, 17, 17); line-height: 22px; letter-spacing: 0px; max-height: 22px; margin-bottom: 0px;">
+                                            5-8</div>
+                                          <div
+                                            class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
+                                            style="font-family: &quot;PingFang SC&quot;; font-weight: 500; font-size: 16px; color: rgb(17, 17, 17); line-height: 22px; letter-spacing: 0px; max-height: 22px; margin-left: 2px; margin-bottom: 1px;">
+                                            人</div>
+                                        </div>
+                                        <div
+                                          class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
+                                          style="font-family: &quot;PingFang SC&quot;; font-weight: 500; font-size: 10px; color: rgb(17, 17, 17); line-height: 14px; letter-spacing: 0px; max-height: 14px; margin-top: -2px; margin-left: 12px;">
+                                          大桌</div>
+                                      </div>
+                                      <div class="rax-view-v2 hide-tap-highlight"
+                                        style="flex-direction: row; align-items: center; margin-left: 3px;">
+                                        <div
+                                          class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
+                                          style="font-family: PingFangSC-Regular; font-weight: 400; font-size: 12px; color: rgb(17, 17, 17); line-height: 16px; letter-spacing: 0px; max-height: 16px;">
+                                          暂未排队</div>
+                                        <div class="rax-view-v2 hide-tap-highlight"
+                                          style="flex-direction: row; align-items: center;">
+                                          <div class="rax-view-v2 hide-tap-highlight"
+                                            style="width: 0.5px; height: 11px; margin-left: 4px; margin-right: 4px; background-color: rgb(204, 204, 204);">
+                                          </div>
+                                          <div
+                                            class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
+                                            style="font-family: PingFangSC-Regular; font-weight: 400; font-size: 12px; color: rgb(17, 17, 17); line-height: 16px; letter-spacing: 0px; max-height: 16px;">
+                                            无需等待</div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="rax-view-v2 hide-tap-highlight"
+                                  style="transform: scaleY(0.5); height: 1px; background-color: rgb(229, 229, 229); margin-top: -1px; margin-left: 12px; margin-right: 12px;">
+                                </div>
+                              </div>
+                              <div class="rax-view-v2 hide-tap-highlight">
+                                <div class="rax-view-v2">
+                                  <div class="rax-view-v2 hide-tap-highlight"
+                                    style="flex-direction: row; align-items: center; justify-content: space-between; border-width: 0.5px; border-color: transparent; background-color: rgb(249, 249, 249); padding-right: 12px; height: 48px;">
+                                    <div class="rax-view-v2 hide-tap-highlight"
+                                      style="flex-direction: row; align-items: center;">
+                                      <div class="rax-view-v2 hide-tap-highlight"
+                                        style="flex-direction: column; margin-left: 12px; width: 78px; margin-bottom: 3px;">
+                                        <div class="rax-view-v2 hide-tap-highlight"
+                                          style="flex-direction: row; align-items: center;">
+                                          <div
+                                            class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
+                                            style="font-family: MTNewDigitalDisplay-Bold; font-size: 16px; color: rgb(17, 17, 17); line-height: 22px; letter-spacing: 0px; max-height: 22px; margin-bottom: 0px;">
+                                            30-99</div>
+                                          <div
+                                            class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
+                                            style="font-family: &quot;PingFang SC&quot;; font-weight: 500; font-size: 16px; color: rgb(17, 17, 17); line-height: 22px; letter-spacing: 0px; max-height: 22px; margin-left: 2px; margin-bottom: 1px;">
+                                            人</div>
+                                        </div>
+                                        <div
+                                          class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
+                                          style="font-family: &quot;PingFang SC&quot;; font-weight: 500; font-size: 10px; color: rgb(17, 17, 17); line-height: 14px; letter-spacing: 0px; max-height: 14px; margin-top: -2px; margin-left: 12px;">
+                                          顺延桌</div>
+                                      </div>
+                                      <div class="rax-view-v2 hide-tap-highlight"
+                                        style="flex-direction: row; align-items: center; margin-left: 3px;">
+                                        <div
+                                          class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
+                                          style="font-family: PingFangSC-Regular; font-weight: 400; font-size: 12px; color: rgb(17, 17, 17); line-height: 16px; letter-spacing: 0px; max-height: 16px;">
+                                          暂未排队</div>
+                                        <div class="rax-view-v2 hide-tap-highlight"
+                                          style="flex-direction: row; align-items: center;">
+                                          <div class="rax-view-v2 hide-tap-highlight"
+                                            style="width: 0.5px; height: 11px; margin-left: 4px; margin-right: 4px; background-color: rgb(204, 204, 204);">
+                                          </div>
+                                          <div
+                                            class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
+                                            style="font-family: PingFangSC-Regular; font-weight: 400; font-size: 12px; color: rgb(17, 17, 17); line-height: 16px; letter-spacing: 0px; max-height: 16px;">
+                                            无需等待</div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="rax-view-v2"
+                        style="flex-direction: column; background-color: rgb(255, 255, 255); border-radius: 12px; padding: 9px 12px; margin-top: 8px; flex: 1 1 0%;">
+                        <div class="rax-view-v2 hide-tap-highlight"
+                          style="flex-direction: row; align-items: center; justify-content: space-between;">
+                          <div
+                            class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
+                            style="font-family: PingFangSC-Semibold; font-weight: 600; font-size: 14px; color: rgb(17, 17, 17); line-height: 20px; letter-spacing: 0px; max-height: 20px;">
+                            商家说明</div>
+                          <div class="max-button-v1" style="flex-direction: row; align-items: center;">
+                            <div
+                              class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
+                              style="font-family: PingFangSC-Regular; font-weight: 400; font-size: 12px; color: rgb(136, 136, 136); line-height: 16px; letter-spacing: 0px; max-height: 16px;">
+                              全部</div><img src="./牛New寿喜烧(滨江宝龙城店)_files/5958df8bcc43c5c60fce8b7681ada671569.png"
+                              class="" style="width: 11px; height: 11px; line-height: 11px;">
+                          </div>
+                        </div><span
+                          class="rax-text-v2 rax-text-v2--other-default rax-text-v2--overflow-hidden rax-text-v2--multiline"
+                          style="-webkit-line-clamp: 5; font-size: 12px; color: rgb(136, 136, 136); line-height: 18px; margin-top: 3px;">＊温馨提示＊
+                          1.(取号)
+                          门店营业后 开餐前会先放线下号码 开餐后会线上线下同时开始放号 详情电话咨询。线上取号没有号码时代表今日号码已派放完毕
+                          2.（位置）
+                          本店没有包间 因门店最大位置是8人位 如超过8人用餐请到迎宾台与迎宾员沟通 谢谢配合
+                          3.(过号)
+                          过号30分钟内 顺延3桌以上 同期过号 按照到店先后顺序依次往下顺延 三桌正常号叫一桌顺延号依此顺延叫号
+                          4.(价格)
+                          本店同桌顾客只能选择同一个餐标(小朋友按照身高收费，1.2米以下包括1.2米免费 ，1.4米以下半价， 超过1.4米全价 ),家长只可带领2位小朋友 身高需在进入门店用餐前进行测量
+                          方便进行后续点单用餐
+                          5.（预约）
+                          .门店只接受8位以上人数预约位置 如需预约 需要提前3天打电话咨询 详细情况 ＊预约只接受开餐第一波预订
+                          6.（用餐时间）
+                          以每一桌第一位顾客入座时间开始计算 两小时用餐时间</span>
+                      </div>
+                      <div class="rax-view-v2 hide-tap-highlight" style="margin-bottom: 81px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rax-view-v2" style="position: absolute; bottom: 0px; left: 0px; right: 0px;">
+            <div class="rax-view-v2 hide-tap-highlight"
+              style="padding: 7px 12px 25px; background-color: rgb(255, 255, 255);">
+              <div class="max-button-v1"
+                style="border-width: 1px; border-radius: 22px; margin-bottom: 7px; overflow: hidden; border-color: transparent;">
+                <div class=""
+                  style="height: 40px; border-radius: 22px; display: flex; flex-direction: row; justify-content: center; background-image: linear-gradient(90deg, rgb(255, 119, 0), rgb(255, 75, 16));">
+                  <div class="__rax-text __rax-text--other-default"
+                    style="font-family: PingFangSC-Semibold; font-weight: 600; font-size: 16px; color: rgb(255, 255, 255); line-height: 22px; letter-spacing: 0px; margin-top: 9px;">
+                    我知道了</div>
+                  <div class="rax-view-v2 hide-tap-highlight"
+                    style="display: flex; align-items: center; justify-content: center; flex-direction: row;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <style>
+    .max-leez-modal-opened {
+      overflow: hidden;
+    }
+  </style>
+  <style>
+    @font-face {
+      font-family: "MTNewDigitalDisplay-Regular";
+      src: url('https://s3plus.meituan.net/s3plus-specialgroup-hfe/fonts/MTNewDigitalDisplay-Regular.otf') format('truetype');
+    }
+
+    @font-face {
+      font-family: "MTNewDigitalDisplay-Medium";
+      src: url('https://s3plus.meituan.net/s3plus-specialgroup-hfe/fonts/MTNewDigitalDisplay-Medium.otf') format('truetype');
+    }
+
+    @font-face {
+      font-family: "MTNewDigitalDisplay-Bold";
+      src: url('https://s3plus.meituan.net/s3plus-specialgroup-hfe/fonts/MTNewDigitalDisplay-Bold.otf') format('truetype');
+    }
+  </style>
+  <style>
+    @font-face {
+      font-family: "leez_max_iconfont_0_1_17";
+      src: url('https://s3plus.meituan.net/v1/mss_28a77f134e5b4abf876b4ff035f4107f/iconfont/project/662/0.1.17/leez_max_iconfont.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: "meishi_iconfont_0_0_6";
+      src: url('https://s3plus.meituan.net/v1/mss_28a77f134e5b4abf876b4ff035f4107f/iconfont/project/1410/0.1.2/MeishiIcon.ttf') format('truetype');
+    }
+  </style>
+  <style>
+    .leez-max-dialog-input:focus-visible {
+      outline: none
+    }
+  </style><deepl-input-controller translate="no"><template shadowrootmode="open">
+      <div dir="ltr" style="visibility: initial !important;">
+        <div class="dl-input-translation-container svelte-95aucy">
+          <div></div>
+        </div>
+      </div>
+    </template></deepl-input-controller>
+</body>
+
+</html>
