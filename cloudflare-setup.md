@@ -11,11 +11,11 @@
 6. 选择你的仓库 `niu-new`
 7. 配置构建设置：
    - **Framework preset**: None (或 Static HTML)
-   - **Build command**: **留空**（重要：静态网站不需要构建，不要填写任何命令）
+   - **Build command**: `npx wrangler deploy`（使用 wrangler 部署）
    - **Build output directory**: `/` (根目录)
    - **Root directory**: `/` (根目录)
    
-   ⚠️ **重要**：确保 Build command 字段完全为空，这样 Cloudflare 会使用默认的静态文件部署，而不是执行 wrangler 命令
+   ✅ **使用 wrangler 部署**：项目已配置 `wrangler.jsonc`，会自动使用 wrangler 部署静态文件
 8. 点击 **Save and Deploy**
 
 ### 自动部署
@@ -68,17 +68,27 @@ https://yourdomain.com
 
 ## 4. 注意事项
 
-- ✅ 静态网站不需要构建命令，直接部署 `index.html` 即可
+- ✅ 使用 wrangler 部署静态文件
+- ✅ `wrangler.jsonc` 已配置，指向当前目录作为资源目录
+- ✅ `.wranglerignore` 已配置，排除 `.git`、文档文件等不需要的文件
 - ✅ `_redirects` 文件已创建，用于处理路由重定向
-- ✅ 已删除 `wrangler.jsonc`，使用 Cloudflare Pages 的原生静态部署
 - ✅ `.gitignore` 文件已创建，排除不需要的文件
 
 ## 5. 如果已经配置了项目
 
-如果项目已经存在并且使用了 wrangler 部署：
+如果项目已经存在：
 
 1. 进入 Cloudflare Pages 项目设置
 2. 进入 **Builds & deployments** → **Build configuration**
-3. 将 **Build command** 设置为空（删除任何命令）
+3. 确保 **Build command** 设置为：`npx wrangler deploy`
 4. 保存设置
 5. 触发一次新的部署（可以推送一个小的更改到 GitHub）
+
+## 6. 关于 .wranglerignore
+
+`.wranglerignore` 文件确保以下文件不会被上传：
+- `.git/` 目录及其所有内容
+- 文档文件（`.md`）
+- 临时文件（`.txt`, `.log`）
+
+这样可以减少部署时间，只上传必要的静态文件。

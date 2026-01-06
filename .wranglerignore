@@ -2,16 +2,18 @@
 .git/
 .gitignore
 .gitattributes
+.git/
 
 # 文档文件
 *.md
 README.md
 cloudflare-setup.md
+FIX-DEPLOY.md
 
 # 临时文件
 *.txt
 *.log
 *.tmp
 
-# 配置文件（可选，根据需要调整）
-# wrangler.jsonc
+# 其他配置文件
+.wranglerignore
