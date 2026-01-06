@@ -11,9 +11,11 @@
 6. 选择你的仓库 `niu-new`
 7. 配置构建设置：
    - **Framework preset**: None (或 Static HTML)
-   - **Build command**: 留空（静态网站不需要构建）
+   - **Build command**: **留空**（重要：静态网站不需要构建，不要填写任何命令）
    - **Build output directory**: `/` (根目录)
    - **Root directory**: `/` (根目录)
+   
+   ⚠️ **重要**：确保 Build command 字段完全为空，这样 Cloudflare 会使用默认的静态文件部署，而不是执行 wrangler 命令
 8. 点击 **Save and Deploy**
 
 ### 自动部署
@@ -66,6 +68,17 @@ https://yourdomain.com
 
 ## 4. 注意事项
 
-- 静态网站不需要构建命令，直接部署 `index.html` 即可
-- `_redirects` 文件已创建，用于处理路由重定向
-- `wrangler.jsonc` 文件可以保留，但 Git 集成部署时不是必需的
+- ✅ 静态网站不需要构建命令，直接部署 `index.html` 即可
+- ✅ `_redirects` 文件已创建，用于处理路由重定向
+- ✅ 已删除 `wrangler.jsonc`，使用 Cloudflare Pages 的原生静态部署
+- ✅ `.gitignore` 文件已创建，排除不需要的文件
+
+## 5. 如果已经配置了项目
+
+如果项目已经存在并且使用了 wrangler 部署：
+
+1. 进入 Cloudflare Pages 项目设置
+2. 进入 **Builds & deployments** → **Build configuration**
+3. 将 **Build command** 设置为空（删除任何命令）
+4. 保存设置
+5. 触发一次新的部署（可以推送一个小的更改到 GitHub）
