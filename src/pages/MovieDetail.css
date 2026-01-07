@@ -1,0 +1,133 @@
+.movie-detail-page {
+	min-height: 100vh;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	padding-bottom: 20px;
+}
+
+.not-found {
+	text-align: center;
+	padding: 60px 20px;
+	color: white;
+}
+
+.not-found p {
+	font-size: 1.2em;
+	margin-bottom: 20px;
+}
+
+.movie-detail-content {
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 0 16px;
+}
+
+.movie-poster-large {
+	width: 100%;
+	height: 300px;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 16px;
+	margin: 20px 0;
+	position: relative;
+	overflow: hidden;
+}
+
+.movie-poster-large::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" opacity="0.2"><path d="M8 5v14l11-7z"/></svg>')
+		center/30% no-repeat;
+}
+
+.movie-emoji-large {
+	font-size: 8em;
+	z-index: 1;
+	position: relative;
+}
+
+.movie-header {
+	background: white;
+	border-radius: 16px;
+	padding: 20px;
+	margin-bottom: 16px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.movie-title-large {
+	font-size: 1.8em;
+	font-weight: bold;
+	margin-bottom: 12px;
+	color: #333;
+}
+
+.movie-meta-large {
+	color: #666;
+	font-size: 1em;
+	margin-bottom: 16px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.divider {
+	color: #999;
+}
+
+.movie-rating-section {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.rating-text-large {
+	font-weight: bold;
+	color: #ff6b35;
+	font-size: 1.2em;
+}
+
+.movie-actions {
+	margin-bottom: 16px;
+}
+
+.movie-actions .adm-button {
+	width: 100%;
+	height: 48px;
+	border-radius: 24px;
+	font-size: 1em;
+}
+
+.movie-description-section,
+.movie-tags-section {
+	background: white;
+	border-radius: 16px;
+	padding: 20px;
+	margin-bottom: 16px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.movie-description-section h3,
+.movie-tags-section h3 {
+	font-size: 1.2em;
+	font-weight: bold;
+	margin-bottom: 12px;
+	color: #333;
+}
+
+.movie-description-full {
+	color: #666;
+	line-height: 1.8;
+	font-size: 0.95em;
+}
+
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+

@@ -1,50 +1,170 @@
-# 影视爱好者网站 Demo
+# 影视爱好者网站 - React + Ant Design Mobile
 
-一个简单而美观的影视爱好者网站演示项目。
+一个使用 React 和 Ant Design Mobile 构建的现代化影视爱好者网站。
+
+## 技术栈
+
+- ⚛️ **React 18** - 用户界面库
+- 📱 **Ant Design Mobile** - 移动端 UI 组件库
+- 🛣️ **React Router DOM** - 路由管理
+- ⚡ **Vite** - 快速的前端构建工具
 
 ## 功能特性
 
 - 🎬 精美的电影卡片展示
 - 🔍 实时搜索功能
-- 📱 响应式设计，支持移动端
-- 🎨 现代化的UI设计
+- 📱 专为移动端优化的响应式设计
+- 🎨 现代化的 UI 设计
 - ⭐ 电影评分和标签系统
-
-## 使用方法
-
-1. 直接在浏览器中打开 `index.html` 文件
-2. 或者使用 Cloudflare Workers 部署（已配置 `wrangler.jsonc`）
-
-## 技术栈
-
-- HTML5
-- CSS3 (Grid布局、Flexbox、渐变效果)
-- Vanilla JavaScript
+- 🛣️ 路由导航（首页、电影详情页）
+- ❤️ 收藏功能
+- 🎯 使用 Ant Design Mobile 组件
 
 ## 项目结构
 
 ```
 .
-├── index.html      # 主页面文件（包含HTML、CSS和JavaScript）
-├── wrangler.jsonc  # Cloudflare Workers 配置文件
-└── README.md       # 项目说明文档
+├── src/
+│   ├── components/          # React 组件
+│   │   ├── MovieCard.jsx   # 电影卡片组件
+│   │   └── MovieCard.css   # 卡片样式
+│   ├── pages/              # 页面组件
+│   │   ├── Home.jsx        # 首页组件
+│   │   ├── Home.css        # 首页样式
+│   │   ├── MovieDetail.jsx # 电影详情页组件
+│   │   └── MovieDetail.css # 详情页样式
+│   ├── data/               # 数据文件
+│   │   └── movies.js       # 电影数据
+│   ├── App.jsx             # 主应用组件（路由配置）
+│   ├── App.css             # 应用样式
+│   ├── main.jsx            # React 入口文件
+│   └── index.css           # 全局样式
+├── index.html              # HTML 入口文件
+├── vite.config.js          # Vite 配置
+├── package.json            # 项目依赖
+└── README.md               # 项目说明
+```
+
+## 快速开始
+
+### 安装依赖
+
+```bash
+npm install
+```
+
+### 开发模式
+
+```bash
+npm run dev
+```
+
+应用将在 `http://localhost:3000` 启动
+
+### 构建生产版本
+
+```bash
+npm run build
+```
+
+### 预览生产构建
+
+```bash
+npm run preview
 ```
 
 ## 部署
 
-### 本地预览
-直接打开 `index.html` 文件即可在浏览器中查看。
+### Cloudflare Pages 部署
 
-### Cloudflare Workers 部署
+项目已配置 `wrangler.jsonc`，可以使用 Cloudflare Workers/Pages 部署：
+
 ```bash
-npx wrangler pages deploy .
+npm run build
+npx wrangler pages deploy dist
 ```
+
+### 其他平台
+
+构建完成后，将 `dist` 目录部署到任何静态托管服务即可。
+
+## 路由说明
+
+### 路由配置
+
+- `/` - 首页，显示电影列表和搜索功能
+- `/movie/:id` - 电影详情页，显示电影的详细信息
+
+### 页面组件
+
+#### Home 组件（首页）
+- 搜索栏（SearchBar）
+- 电影列表展示
+- 点击电影卡片跳转到详情页
+- 空状态提示（Empty）
+
+#### MovieDetail 组件（电影详情页）
+- 电影海报展示
+- 完整的电影信息
+- 评分展示
+- 收藏功能
+- 类型标签
+- 返回导航
+
+### 组件说明
+
+#### MovieCard 组件
+
+电影卡片组件，展示电影的基本信息：
+- 电影海报（emoji 图标）
+- 标题和年份
+- 评分（使用 Rate 组件）
+- 描述
+- 类型标签（使用 Tag 组件）
+
+#### App 组件
+
+主应用组件，包含：
+- 路由配置
+- 导航栏（NavBar）
 
 ## 未来改进
 
-- [ ] 添加电影详情页面
-- [ ] 集成真实的电影API
-- [ ] 添加收藏功能
+- [x] 添加电影详情页面
+- [x] 添加路由功能
+- [x] 添加收藏功能（UI）
+- [ ] 集成真实的电影 API（如 TMDB）
 - [ ] 添加评论系统
+- [ ] 支持电影筛选和排序
+- [ ] 添加用户登录功能
 - [ ] 支持多语言
+- [ ] 持久化收藏数据（localStorage）
 
+## 开发说明
+
+### 添加新电影
+
+编辑 `src/data/movies.js` 文件，添加新的电影对象：
+
+```javascript
+{
+  id: 13,
+  title: "电影名称",
+  year: 2024,
+  rating: 9.0,
+  genre: ["类型1", "类型2"],
+  tags: ["tag1", "tag2"],
+  description: "电影描述",
+  emoji: "🎬"
+}
+```
+
+### 自定义样式
+
+- 全局样式：`src/index.css`
+- 应用样式：`src/App.css`
+- 组件样式：`src/components/MovieCard.css`
+
+## 许可证
+
+MIT
