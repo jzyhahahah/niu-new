@@ -2,6 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import { NavBar } from "antd-mobile";
 import Home from "./pages/Home";
 import MovieDetail from "./pages/MovieDetail";
+import NiuNew from "./pages/NiuNew";
+import { useParams } from "react-router-dom";
 import "./App.css";
 
 function App() {
@@ -23,6 +25,10 @@ function App() {
 					}
 				/>
 				<Route path="/movie/:id" element={<MovieDetail />} />
+				<Route
+					path="/niu-new/a30"
+					element={<NiuNew id="A30" time="10:38" phone="158****7975" />}
+				/>
 			</Routes>
 		</div>
 	);
