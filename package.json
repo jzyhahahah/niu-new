@@ -8,6 +8,7 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"ahooks": "^3.9.6",
 		"antd-mobile": "^5.34.0",
 		"dayjs": "^1.11.19",
 		"react": "^18.2.0",
