@@ -1,12 +1,23 @@
 import dayjs from "dayjs";
 import "./NiuNew.css";
 import { useTitle } from "ahooks";
+import { PullToRefresh } from "antd-mobile";
+import { useState } from "react";
+import { Popup } from "antd-mobile";
+import { CloseOutline } from "antd-mobile-icons";
 function NiuNew({ id, time, phone }) {
 	const [hour, minute] = time.split(":");
 	const hasWaitTime = time
 		? dayjs().diff(dayjs().set("hour", hour).set("minute", minute), "minute")
 		: 0;
+	const [visible, setVisible] = useState(false);
 	useTitle("牛New寿喜烧(滨江宝龙城店)");
+
+	const handleSetVisible = () => {
+		setVisible(true);
+	};
+
+	window.handleSetVisible = handleSetVisible;
 
 	const niuNewHtml = `
   <div style="flex: 1 1 0%; height: 100%; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-content: flex-start; border: 0vw; margin: 0vw; padding: 0vw; min-width: 0vw; position: relative;">
@@ -442,6 +453,7 @@ function NiuNew({ id, time, phone }) {
 											>
 												<div
 													class="rax-view-v2"
+                          onclick="window.location.href = 'https://m.dianping.com/shopinfo/k8BDajR0ronZbg41?msource=Appshare2021&utm_source=shop_share&shoptype=10&shopcategoryid=111&cityid=3&isoversea=0'"
 													style="display: flex; align-items: center; flex-direction: row; justify-content: flex-start; flex: 1 1 0%; overflow: hidden; margin-right: 16px;"
 												>
 													<div
@@ -556,6 +568,7 @@ function NiuNew({ id, time, phone }) {
 													style="display: flex; flex-direction: row; align-items: center; justify-content: center; padding-left: 15px; padding-right: 15px; position: absolute; right: 0px; margin-right: -15px;"
 												>
 													<div
+                            onclick="window.handleSetVisible()"
 														class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
 														style="display: inline; white-space: pre-wrap; flex-shrink: unset; font-family: PingFangSC-Regular; font-weight: 400; font-size: 12px; color: rgb(85, 85, 85); line-height: 16px; letter-spacing: 0vw; max-height: 16px;"
 													>
@@ -592,10 +605,67 @@ function NiuNew({ id, time, phone }) {
 		</div>
   `;
 	return (
-		<div
-			dangerouslySetInnerHTML={{ __html: niuNewHtml }}
-			style={{ height: "100%" }}
-		></div>
+		<>
+			<PullToRefresh
+				onRefresh={async () => {
+					await sleep(3000);
+					// setData([...getNextData(), ...data]);
+				}}
+				// renderText={(status) => {
+				// 	// return <div>{statusRecord[status]}</div>;
+				// 	return <div className="loading-15" />;
+				// }}
+			>
+				<div
+					dangerouslySetInnerHTML={{ __html: niuNewHtml }}
+					style={{ height: "100%" }}
+				></div>
+			</PullToRefresh>
+			<Popup
+				visible={visible}
+				onMaskClick={() => {
+					setVisible(false);
+				}}
+				showCloseButton
+				bodyStyle={{
+					borderTopLeftRadius: "20px",
+					borderTopRightRadius: "20px",
+					minHeight: "40vh",
+				}}
+			>
+				<div className="niu-new-popup-title">
+					<span>商家说明</span>
+				</div>
+				<div
+					className="niu-new-popup-content"
+					style={{
+						padding: "0 16px",
+						paddingBottom: "16px",
+						whiteSpace: "pre-wrap",
+						color: "#404040",
+						fontSize: "14px",
+					}}
+				>
+					{`1.(取号) 
+    若营业时间内关闭线上取号代表号已发完 请勿跑空
+    周六日和节假日线上取号根据现场情况开关，优先线下发号。
+	周一至周五10：00现场取号 11：00线上同步开餐
+	周一至周四4：00现场取号 5：00线上同步开餐
+        周五下午4：00现场取号     4：30线上同步开餐
+        周六日上午10：00现场取号 11：00开餐
+        周六日下午4：00现场取号 4：30开餐 
+        周六日根据现场情况开放线上取号
+        重点:
+        取完号请妥善保管小票，照片形式或者丢失的无法入场，请凭纸质号入场(因近日黄牛较多，稍有变动感谢大家理解配合) 
+2.(过号)
+过号30分钟内顺延三到五桌，超过30分钟作废，需要重新取号排队。请及时关注叫号进度，网络有延迟，请提前到店等候。
+3.黄牛票或倒买倒卖获取的号，被发现怒不接待；门店禁止跑腿代取号；抵制黄牛和倒买倒卖行为，请大家谅解谢谢。 
+4.(桌型)
+    店内1-4人桌有35桌，5-6人桌有6桌。
+5.本店为自助餐 两小时用餐 仅限堂食用餐不支持打包 包含饮料谢绝外带，一经发现做部分押金退款处理。`}
+				</div>
+			</Popup>
+		</>
 	);
 }
 

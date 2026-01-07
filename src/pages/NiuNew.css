@@ -2915,6 +2915,52 @@ html {
 	flex-direction: column;
 }
 
-*:not(#notice) {
+*:not(#notice):not(.niu-new-popup-content) {
 	white-space: nowrap !important;
+}
+
+.adm-pull-to-refresh {
+	height: 100% !important;
+	display: flex !important;
+	flex-direction: column !important;
+}
+
+.adm-pull-to-refresh-content {
+	flex: 1 !important;
+}
+
+.loading-15 {
+	width: 48px;
+	height: 48px;
+	border: 3px solid #ddd;
+	border-bottom-color: transparent;
+	border-radius: 50%;
+	display: inline-block;
+	position: relative;
+	animation: loading-15 1s linear infinite;
+}
+.loading-15:after {
+	content: "";
+	position: absolute;
+	left: 20px;
+	top: 32px;
+	border: 10px solid transparent;
+	border-right-color: #ddd;
+	transform: rotate(-40deg);
+}
+@keyframes loading-15 {
+	0% {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.niu-new-popup-title {
+	text-align: center;
+	font-size: 16px;
+	font-weight: 600;
+	color: #333;
+	padding: 14px 0;
 }
