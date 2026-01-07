@@ -2,21 +2,93 @@ import dayjs from "dayjs";
 import "./NiuNew.css";
 import { useTitle } from "ahooks";
 import { PullToRefresh } from "antd-mobile";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Popup } from "antd-mobile";
+import { Modal } from "antd-mobile";
 function NiuNew({ id, time, phone, isXixi = true }) {
 	const [hour, minute] = time.split(":");
 	const hasWaitTime = time
 		? dayjs().diff(dayjs().set("hour", hour).set("minute", minute), "minute")
 		: 0;
 	const [visible, setVisible] = useState(false);
+	const [modalVisible, setModalVisible] = useState(false);
+	const [isNotificationEnabled, setIsNotificationEnabled] = useState(true); // 默认开启
+	const containerRef = useRef(null);
 	useTitle(isXixi ? "牛New寿喜烧(西溪天街店)" : "牛New寿喜烧(滨江宝龙城店)");
 
 	const handleSetVisible = () => {
 		setVisible(true);
 	};
 
+	const handleModalVisible = () => {
+		setModalVisible(true);
+	};
+
 	window.handleSetVisible = handleSetVisible;
+	window.handleModalVisible = handleModalVisible;
+
+	// 更新按钮样式的函数
+	const updateToggleButton = (enabled) => {
+		const button = containerRef.current?.querySelector(
+			"#notification-toggle-button"
+		);
+		const slider = containerRef.current?.querySelector(
+			"#notification-toggle-slider"
+		);
+		const bg = containerRef.current?.querySelector("#notification-toggle-bg");
+
+		if (button && slider && bg) {
+			if (enabled) {
+				// 开启状态：橙色背景，滑块在右侧
+				button.style.backgroundColor = "rgb(204, 204, 204)";
+				bg.style.opacity = "1";
+				bg.style.backgroundColor = "rgb(255, 75, 16)";
+				slider.style.transform = "translateX(10px)";
+			} else {
+				// 关闭状态：灰色背景，滑块在左侧
+				button.style.backgroundColor = "rgb(204, 204, 204)";
+				bg.style.opacity = "0";
+				bg.style.backgroundColor = "rgb(204, 204, 204)";
+				slider.style.transform = "translateX(1px)";
+			}
+		}
+	};
+
+	// 添加按钮点击事件监听
+	useEffect(() => {
+		const button = containerRef.current?.querySelector(
+			"#notification-toggle-button"
+		);
+
+		if (button) {
+			const handleClick = (e) => {
+				e.preventDefault();
+				e.stopPropagation();
+				setIsNotificationEnabled((prev) => {
+					const newState = !prev;
+					// 延迟更新样式，确保状态已更新
+					setTimeout(() => {
+						updateToggleButton(newState);
+					}, 0);
+					return newState;
+				});
+			};
+
+			button.addEventListener("click", handleClick);
+
+			// 初始化按钮状态
+			updateToggleButton(isNotificationEnabled);
+
+			return () => {
+				button.removeEventListener("click", handleClick);
+			};
+		}
+	}, []); // 只在组件挂载时执行一次
+
+	// 当状态改变时更新按钮样式
+	useEffect(() => {
+		updateToggleButton(isNotificationEnabled);
+	}, [isNotificationEnabled]);
 
 	const niuNewHtml = `
   <div style="flex: 1 1 0%; height: 100%; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-content: flex-start; border: 0vw; margin: 0vw; padding: 0vw; min-width: 0vw; position: relative;">
@@ -482,18 +554,21 @@ function NiuNew({ id, time, phone, isXixi = true }) {
 														</div>
 													</div>
 													<div
-														class="max-button-v1"
-														style="width: 24px; height: 14px; border-radius: 14px; background-color: rgb(204, 204, 204); display: flex; flex-direction: row; align-items: center; position: relative; opacity: 1;"
+														id="notification-toggle-button"
+														class="max-button-v1 notification-toggle"
+														style="width: 24px; height: 14px; border-radius: 14px; background-color: rgb(204, 204, 204); display: flex; flex-direction: row; align-items: center; position: relative; opacity: 1; cursor: pointer;"
 													>
 														<div
+															id="notification-toggle-slider"
 															animation="[object Object]"
 															class="rax-view-v2"
-															style="width: 12px; height: 12px; border-radius: 12px; background-color: rgb(255, 255, 255); z-index: 1; margin-left: 1px; transform: translateX(10px);"
+															style="width: 12px; height: 12px; border-radius: 12px; background-color: rgb(255, 255, 255); z-index: 1; margin-left: 1px; transform: translateX(10px); transition: transform 0.3s ease;"
 														></div>
 														<div
+															id="notification-toggle-bg"
 															animation="[object Object]"
 															class="rax-view-v2"
-															style="background-color: rgb(255, 75, 16); border-color: rgb(255, 75, 16); border-width: 1px; position: absolute; width: 24px; height: 14px; border-radius: 14px; opacity: 1;"
+															style="background-color: rgb(255, 75, 16); border-color: rgb(255, 75, 16); border-width: 1px; position: absolute; width: 24px; height: 14px; border-radius: 14px; opacity: 1; transition: opacity 0.3s ease, background-color 0.3s ease;"
 														></div>
 													</div>
 												</div>
@@ -528,6 +603,7 @@ function NiuNew({ id, time, phone, isXixi = true }) {
 														如无法到店就餐，请及时取消
 													</div>
 													<div
+                            onclick="window.handleModalVisible()"
 														class="rax-view-v2"
 														style="width: 80px; border-width: 0.5px; border-radius: 17px; flex-direction: row; align-items: center; justify-content: center; border-color: rgb(204, 204, 204); height: 30px; margin-left: 12px;"
 													>
@@ -616,9 +692,10 @@ function NiuNew({ id, time, phone, isXixi = true }) {
 				// }}
 			>
 				<div
+					ref={containerRef}
 					dangerouslySetInnerHTML={{ __html: niuNewHtml }}
 					style={{ height: "100%" }}
-				></div>
+				/>
 			</PullToRefresh>
 			<Popup
 				visible={visible}
@@ -667,6 +744,34 @@ function NiuNew({ id, time, phone, isXixi = true }) {
 5.本店为自助餐 两小时用餐 仅限堂食用餐不支持打包 包含饮料谢绝外带，一经发现做部分押金退款处理。`}
 				</div>
 			</Popup>
+			<Modal
+				visible={modalVisible}
+				title={<span className="niu-new-modal-title">确定要取消排队吗？</span>}
+				closeOnAction
+				showCloseButton
+				onClose={() => {
+					setModalVisible(false);
+				}}
+				bodyStyle={{
+					width: "300px",
+					borderRadius: "12px",
+					backgroundColor: "rgb(255, 255, 255)",
+					overflow: "hidden",
+				}}
+				actions={[
+					{
+						key: "cancel",
+						text: "取消排队",
+						className: "niu-new-modal-cancel-button",
+					},
+					{
+						key: "confirm",
+						text: "继续排队",
+						primary: true,
+						className: "niu-new-modal-confirm-button",
+					},
+				]}
+			/>
 		</>
 	);
 }
