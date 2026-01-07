@@ -11,7 +11,7 @@ function NiuNew({ id, time, phone }) {
 		? dayjs().diff(dayjs().set("hour", hour).set("minute", minute), "minute")
 		: 0;
 	const [visible, setVisible] = useState(false);
-	useTitle("牛New寿喜烧(滨江宝龙城店)");
+	useTitle("牛New寿喜烧(西溪天街店)");
 
 	const handleSetVisible = () => {
 		setVisible(true);
