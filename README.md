@@ -75,18 +75,50 @@ npm run preview
 
 ## 部署
 
+### 重要提示
+
+⚠️ **必须先在本地构建项目，然后部署构建后的 `dist` 目录，不要直接部署源代码！**
+
 ### Cloudflare Pages 部署
 
-项目已配置 `wrangler.jsonc`，可以使用 Cloudflare Workers/Pages 部署：
+#### 方法一：使用 Wrangler CLI
+
+1. 构建项目：
 
 ```bash
+npm install
 npm run build
+```
+
+2. 部署到 Cloudflare Pages：
+
+```bash
 npx wrangler pages deploy dist
 ```
+
+#### 方法二：通过 Cloudflare Dashboard
+
+1. 在 Cloudflare Dashboard 中创建新的 Pages 项目
+2. 连接你的 Git 仓库
+3. 构建配置：
+   - **构建命令**: `npm run build`
+   - **构建输出目录**: `dist`
+   - **框架预设**: `Vite`
+
+项目已配置：
+
+- `wrangler.jsonc` - Wrangler 配置
+- `public/_redirects` - SPA 路由重定向规则
+- `public/_headers` - HTTP 头配置（包括正确的 MIME 类型）
 
 ### 其他平台
 
 构建完成后，将 `dist` 目录部署到任何静态托管服务即可。
+
+**注意**: 确保服务器配置支持：
+
+- SPA 路由（所有路由重定向到 `index.html`）
+- 正确的 JavaScript MIME 类型 (`application/javascript`)
 
 ## 路由说明
 
@@ -98,12 +130,14 @@ npx wrangler pages deploy dist
 ### 页面组件
 
 #### Home 组件（首页）
+
 - 搜索栏（SearchBar）
 - 电影列表展示
 - 点击电影卡片跳转到详情页
 - 空状态提示（Empty）
 
 #### MovieDetail 组件（电影详情页）
+
 - 电影海报展示
 - 完整的电影信息
 - 评分展示
@@ -116,6 +150,7 @@ npx wrangler pages deploy dist
 #### MovieCard 组件
 
 电影卡片组件，展示电影的基本信息：
+
 - 电影海报（emoji 图标）
 - 标题和年份
 - 评分（使用 Rate 组件）
@@ -125,6 +160,7 @@ npx wrangler pages deploy dist
 #### App 组件
 
 主应用组件，包含：
+
 - 路由配置
 - 导航栏（NavBar）
 
