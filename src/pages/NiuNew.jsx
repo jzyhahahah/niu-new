@@ -626,6 +626,9 @@ function NiuNew({ id, time, phone }) {
 				onMaskClick={() => {
 					setVisible(false);
 				}}
+				onClose={() => {
+					setVisible(false);
+				}}
 				showCloseButton
 				bodyStyle={{
 					borderTopLeftRadius: "20px",
