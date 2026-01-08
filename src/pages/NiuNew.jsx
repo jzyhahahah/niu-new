@@ -14,7 +14,9 @@ function NiuNew({ id, time, phone, isXixi = true }) {
 	const [modalVisible, setModalVisible] = useState(false);
 	const [isNotificationEnabled, setIsNotificationEnabled] = useState(true); // 默认开启
 	const containerRef = useRef(null);
-	useTitle(isXixi ? "牛New寿喜烧(西溪天街店)" : "牛New寿喜烧(滨江宝龙城店)");
+	useTitle(
+		isXixi ? "牛New寿喜烧(龙湖西溪天街店)" : "牛New寿喜烧(滨江宝龙城店)"
+	);
 
 	const handleSetVisible = () => {
 		setVisible(true);
@@ -531,7 +533,7 @@ function NiuNew({ id, time, phone, isXixi = true }) {
 														class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
 														style="display: inline; white-space: pre-wrap; flex-shrink: 1; font-family: PingFangSC-Semibold; font-weight: 600; font-size: 14px; color: rgb(17, 17, 17); line-height: 20px; letter-spacing: 0vw; max-height: 20px;"
 													>
-														${isXixi ? "牛New寿喜烧(西溪天街店)" : "牛New寿喜烧(滨江宝龙城店)"}
+														${isXixi ? "牛New寿喜烧(龙湖西溪天街店)" : "牛New寿喜烧(滨江宝龙城店)"}
 													</div>
 													<img
 														src="/fa7864c79bd1cf63041ab7e7c56bffb9313.png"
