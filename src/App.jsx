@@ -36,6 +36,17 @@ function App() {
 						/>
 					}
 				/>
+				<Route
+					path="/niu-new/a103"
+					element={
+						<NiuNew
+							id="A103"
+							time="16:30"
+							phone="158****7975"
+							shopName="baolong"
+						/>
+					}
+				/>
 			</Routes>
 		</div>
 	);
