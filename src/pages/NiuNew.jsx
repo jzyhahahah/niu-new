@@ -30,6 +30,25 @@ function NiuNew({ id, time, phone, shopName }) {
 		setModalVisible(true);
 	};
 
+	const handleProgressClick = () => {
+		const progressBtn = containerRef.current?.querySelector("#progress-btn");
+		if (progressBtn.style.transform === "rotate(0deg)") {
+			progressBtn.style.transform = "rotate(180deg)";
+		} else {
+			progressBtn.style.transform = "rotate(0deg)";
+		}
+		const progress = containerRef.current?.querySelector("#progress");
+		if (progress) {
+			if (progress.style.height === "50px") {
+				progress.style.height = "0px";
+			} else {
+				progress.style.height = "50px";
+			}
+		}
+	};
+
+	window.handleProgressClick = handleProgressClick;
+
 	window.handleSetVisible = handleSetVisible;
 	window.handleModalVisible = handleModalVisible;
 
@@ -175,7 +194,9 @@ function NiuNew({ id, time, phone, shopName }) {
 																<div
 																	forwardedref="[object Object]"
 																	class="rax-view-v2"
-																	style="transform: rotate(0deg);"
+																	id="progress-btn"
+																	style="transform: rotate(0deg); transition: all 0.3s ease-in;"
+																	onclick="window.handleProgressClick()"
 																>
 																	<img
 																		src="/23f8797758876f76221a9e110e061dbd645.png"
@@ -199,7 +220,8 @@ function NiuNew({ id, time, phone, shopName }) {
 														<div
 															forwardedref="[object Object]"
 															class="rax-view-v2"
-															style="width: 100%; overflow: hidden; display: flex; flex-direction: column; height: 50px;"
+															id="progress"
+															style="width: 100%; overflow: hidden; display: flex; flex-direction: column; height: 50px; transition: all 0.2s ease-in-out;"
 														>
 															<div
 																class="rax-view-v2"
