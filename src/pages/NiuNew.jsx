@@ -199,11 +199,11 @@ function NiuNew({ id, time, phone, shopName }) {
 														<div
 															forwardedref="[object Object]"
 															class="rax-view-v2"
-															style="width: 100%; overflow: hidden; display: flex; flex-direction: column; height: 0px;"
+															style="width: 100%; overflow: hidden; display: flex; flex-direction: column; height: 50px;"
 														>
 															<div
 																class="rax-view-v2"
-																style="position: absolute; top: 0vw; left: 0vw; display: flex; flex-direction: column;"
+																style="position: absolute; top: 0vw; left: 0vw; display: flex; flex-direction: column; width: 100%;"
 															>
 																<div
 																	class="rax-view-v2"
@@ -211,11 +211,11 @@ function NiuNew({ id, time, phone, shopName }) {
 																>
 																	<div
 																		class="rax-view-v2"
-																		style="flex-direction: column; width: 1872px;"
+																		style="flex-direction: column; width: 100%;"
 																	>
 																		<div
 																			class="rax-view-v2"
-																			style="width: 1872px;"
+																			style="width: 100%;"
 																		>
 																			<div
 																				class="rax-view-v2"
@@ -224,9 +224,9 @@ function NiuNew({ id, time, phone, shopName }) {
 																			<div
 																				forwardedref="[object Object]"
 																				class="rax-view-v2"
-																				style="height: 8px; border-radius: 8px; position: absolute; left: 0px; right: 0px; top: 0px; overflow: hidden; width: 468px;"
+																				style="height: 8px; border-radius: 8px; position: absolute; left: 0px; right: 0px; top: 0px; overflow: hidden; width: 51%;"
 																			>
-																				<div style="position: absolute; top: 0px; height: 8px; border-radius: 8px; width: 1872px; background-image: linear-gradient(90.2449deg, rgb(255, 119, 0), rgb(255, 75, 16));"></div>
+																				<div style="position: absolute; top: 0px; height: 8px; border-radius: 8px; width: 100%; background-image: linear-gradient(90.2449deg, rgb(255, 119, 0), rgb(255, 75, 16));"></div>
 																				<div
 																					class="rax-view-v2"
 																					style="flex-direction: row; right: 0px; top: 2.5px; position: absolute;"
@@ -243,7 +243,7 @@ function NiuNew({ id, time, phone, shopName }) {
 																			</div>
 																			<div
 																				class="rax-view-v2"
-																				style="flex-direction: row; position: absolute; left: 0px; top: 0px; justify-content: space-between; width: 1872px;"
+																				style="flex-direction: row; position: absolute; left: 0px; top: 0px; justify-content: space-between; width: 100%;"
 																			>
 																				<div
 																					class="rax-view-v2"
@@ -275,7 +275,7 @@ function NiuNew({ id, time, phone, shopName }) {
 																			</div>
 																			<div
 																				class="rax-view-v2"
-																				style="flex-direction: row; width: 1872px;"
+																				style="flex-direction: row; width: 100%;"
 																			>
 																				<div
 																					class="rax-view-v2"
@@ -295,7 +295,7 @@ function NiuNew({ id, time, phone, shopName }) {
 																				</div>
 																				<div
 																					class="rax-view-v2"
-																					style="position: absolute; left: 906px;"
+																					style="position: absolute; left: 50%; transform: translateX(-50%);"
 																				>
 																					<div
 																						class="rax-view-v2"
@@ -311,7 +311,7 @@ function NiuNew({ id, time, phone, shopName }) {
 																				</div>
 																				<div
 																					class="rax-view-v2"
-																					style="position: absolute; left: 1812px;"
+																					style="position: absolute; right: 0px;"
 																				>
 																					<div
 																						class="rax-view-v2"
