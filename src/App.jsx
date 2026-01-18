@@ -37,9 +37,9 @@ function App() {
 					}
 				/>
 				<Route
-					path="/niu-new/a89"
+					path="/niu-new/a78"
 					element={
-						<NiuNew id="A89" time="17:00" phone="158****7975" shopName="xixi" />
+						<NiuNew id="A78" time="16:10" phone="198****8179" shopName="baolong" />
 					}
 				/>
 			</Routes>
