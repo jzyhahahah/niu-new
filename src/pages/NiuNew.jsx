@@ -183,7 +183,7 @@ function NiuNew({ id, time, phone, shopName }) {
 																		class="__rax-text __rax-text--other-default  __rax-text--overflow-hidden __rax-text--singleline __rax-text--ellipsis"
 																		style="display: inline; white-space: pre-wrap; flex-shrink: unset; font-family: PingFangSC-Semibold; font-weight: 600; font-size: 14px; color: rgb(17, 17, 17); line-height: 20px; letter-spacing: 0vw; max-height: 20px;"
 																	>
-																		下一桌就到你啦 ~
+																		下一桌就到你啦
 																	</div>
 																</div>
 															</div>
