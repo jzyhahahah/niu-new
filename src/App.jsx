@@ -7,60 +7,60 @@ import { useParams } from "react-router-dom";
 import "./App.css";
 
 function App() {
-	return (
-		<div className="app">
-			<Routes>
-				<Route
-					path="/"
-					element={
-						<>
-							<NavBar className="app-navbar">
-								<div className="app-header">
-									<span className="header-emoji">🎬</span>
-									<span className="header-title">影视爱好者</span>
-								</div>
-							</NavBar>
-							<Home />
-						</>
-					}
-				/>
-				<Route path="/movie/:id" element={<MovieDetail />} />
-				<Route
-					path="/niu-new/a59"
-					element={
-						<NiuNew
-							id="A59"
-							time="15:54"
-							phone="158****7975"
-							shopName="baolong"
-						/>
-					}
-				/>
-				<Route
-					path="/niu-new/a73"
-					element={
-						<NiuNew
-							id="A173"
-							time="16:03"
-							phone="158****7975"
-							shopName="baolong"
-						/>
-					}
-				/>
-				<Route
-					path="/niu-new/a70"
-					element={
-						<NiuNew
-							id="A70"
-							time="16:01"
-							phone="198****8179"
-							shopName="baolong"
-						/>
-					}
-				/>
-			</Routes>
-		</div>
-	);
+  return (
+    <div className="app">
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <NavBar className="app-navbar">
+                <div className="app-header">
+                  <span className="header-emoji">🎬</span>
+                  <span className="header-title">影视爱好者</span>
+                </div>
+              </NavBar>
+              <Home />
+            </>
+          }
+        />
+        <Route path="/movie/:id" element={<MovieDetail />} />
+        <Route
+          path="/niu-new/a59"
+          element={
+            <NiuNew
+              id="A59"
+              time="15:54"
+              phone="158****7975"
+              shopName="baolong"
+            />
+          }
+        />
+        <Route
+          path="/niu-new/a73"
+          element={
+            <NiuNew
+              id="A173"
+              time="16:03"
+              phone="158****7975"
+              shopName="baolong"
+            />
+          }
+        />
+        <Route
+          path="/niu-new/a70"
+          element={
+            <NiuNew
+              id="A70"
+              time="16:01"
+              phone="198****8179"
+              shopName="baolong"
+            />
+          }
+        />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
