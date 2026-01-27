@@ -26,33 +26,11 @@ function App() {
         />
         <Route path="/movie/:id" element={<MovieDetail />} />
         <Route
-          path="/niu-new/a59"
+          path="/niu-new/a122"
           element={
             <NiuNew
-              id="A59"
-              time="15:54"
-              phone="158****7975"
-              shopName="baolong"
-            />
-          }
-        />
-        <Route
-          path="/niu-new/a73"
-          element={
-            <NiuNew
-              id="A173"
-              time="16:03"
-              phone="158****7975"
-              shopName="baolong"
-            />
-          }
-        />
-        <Route
-          path="/niu-new/a70"
-          element={
-            <NiuNew
-              id="A70"
-              time="16:01"
+              id="A122"
+              time="17:25"
               phone="198****8179"
               shopName="baolong"
             />
